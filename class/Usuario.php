@@ -12,7 +12,7 @@
       }
 
       public function setIdusuario($value){
-      	   $this->$idusuario = $value;
+      	   $this->idusuario = $value;
       }
 
       public function getDeslogin(){
@@ -20,7 +20,7 @@
       }
 
       public function setDeslogin($value){
-      	   $this->$deslogin = $value;
+      	   $this->deslogin = $value;
       }
 
       public function getDessenha(){
@@ -28,7 +28,7 @@
       }
 
       public function setDessenha($value){
-      	   $this->$dessenha = $value;
+      	   $this->dessenha = $value;
       }
 
       public function getDtcadastro(){
@@ -36,7 +36,7 @@
       }
 
       public function setDtcadastro($value){
-      	   $this->$dtcadastro = $value;
+      	   $this->dtcadastro = $value;
       }
 
       public function loadById($id){
@@ -56,6 +56,18 @@
       	  	 $this->setDessenha($row['dessenha']);
       	  	 $this->setDtcadastro(new DateTime($row['dtcadastro']));
       	  } 
+        }
+
+      public function __toString(){
+
+      	 return json_encode(array(
+        	"idusuario"=>$this->getIdusuario(),
+        	"deslogin"=>$this->getDeslogin(),
+        	"dessenha"=>$this->getDessenha(),
+        	"dtcadastro"=>$this->getDtcadastro()->format("d/m/y H:i:s")
+
+      	 ));
+
       }
 
      }
